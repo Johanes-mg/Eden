@@ -143,6 +143,7 @@
 
   function renderHome() {
     app.innerHTML = "";
+    app.classList.add("app-centered");
 
     const hero = el("section", "hero");
     const h1 = document.createElement("h1");
@@ -155,6 +156,8 @@
 
   function renderAll() {
     app.innerHTML = "";
+    app.classList.remove("app-centered");
+
     const cats = filteredCategories();
 
     if (cats.length === 0) {
@@ -167,6 +170,7 @@
 
   function renderAbout() {
     app.innerHTML = "";
+    app.classList.remove("app-centered");
 
     const wrap = el("div", "about-content");
 

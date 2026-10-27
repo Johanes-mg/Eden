@@ -52,7 +52,7 @@ body {
   left: 0;
   right: 0;
   height: var(--header-h);
-  background: rgba(250, 249, 245, 0.85);
+  background: rgba(250, 249, 245, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -162,6 +162,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 32px;
   padding-bottom: 80px;
 }
 
@@ -451,8 +452,12 @@ body {
   }
 
   body {
-    padding-top: 128px;
+    padding-top: 168px;
     padding-bottom: var(--footer-h);
+  }
+
+  #app {
+    padding-top: 28px;
   }
 
   .eden-header {
@@ -462,7 +467,7 @@ body {
   .header-inner {
     flex-wrap: wrap;
     height: auto;
-    padding: 12px 0;
+    padding: 14px 0 12px;
     gap: 10px;
     justify-content: center;
   }
@@ -484,6 +489,12 @@ body {
     width: 100%;
     justify-content: center;
     margin: 0;
+    padding-top: 4px;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav a {
+    padding: 8px 12px;
   }
 }
 
@@ -493,7 +504,12 @@ body {
   }
 
   body {
-    padding-top: 124px;
+    padding-top: 160px;
+  }
+
+  #app {
+    padding-top: 24px;
+    padding-bottom: 60px;
   }
 
   .brand-name {
@@ -540,17 +556,22 @@ body {
     padding: 0 14px;
   }
 
-  body {
-    padding-top: 120px;
-    padding-bottom: 52px;
-  }
-
   :root {
     --footer-h: 52px;
   }
 
+  body {
+    padding-top: 156px;
+    padding-bottom: 52px;
+  }
+
+  #app {
+    padding-top: 20px;
+    padding-bottom: 52px;
+  }
+
   .header-inner {
-    padding: 10px 0;
+    padding: 12px 0 10px;
     gap: 8px;
   }
 
@@ -639,6 +660,10 @@ body {
 }
 
 @media (max-width: 360px) {
+  body {
+    padding-top: 152px;
+  }
+
   .nav a {
     padding: 5px 6px;
     font-size: 11px;
