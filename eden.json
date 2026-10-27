@@ -1,0 +1,238 @@
+{
+  "categories": [
+    {
+      "id": "os",
+      "name": "Systèmes d'exploitation",
+      "items": [
+        { "name": "MX Linux", "image": "images/mxlinux.png", "tags": ["os", "linux"] },
+        { "name": "Linux Mint", "image": "images/linuxmint.png", "tags": ["os", "linux"] },
+        { "name": "Debian", "image": "images/debian.png", "tags": ["os", "linux"] },
+        { "name": "Manjaro Linux", "image": "images/manjarolinux.png", "tags": ["os", "linux"] },
+        { "name": "CachyOS", "image": "images/cachyos.png", "tags": ["os", "linux"] },
+        { "name": "ZorinOS", "image": "images/zorinos.png", "tags": ["os", "linux"] },
+        { "name": "Windows LTSC IoT Entreprise", "image": "images/windowsltsc.png", "tags": ["os", "windows"], "payant": true }
+      ]
+    },
+    {
+      "id": "retouchephoto",
+      "name": "Retouche photo",
+      "items": [
+        { "name": "Affinity Photo", "image": "images/affinity_photo.png", "tags": ["photo", "retouche"] },
+        { "name": "GIMP", "image": "images/gimp.png", "tags": ["photo", "retouche"] }
+      ]
+    },
+    {
+      "id": "illustration",
+      "name": "Illustration",
+      "items": [
+        { "name": "Affinity Designer", "image": "images/affinity_designer.png", "tags": ["vectoriel", "illustration", "design"] },
+        { "name": "Inkscape", "image": "images/inkscape.png", "tags": ["vectoriel", "illustration", "design"] }
+      ]
+    },
+    {
+      "id": "creationdaw",
+      "name": "Création de Musiques",
+      "items": [
+        { "name": "LMMS", "image": "images/lmms.png", "tags": ["audio", "musique", "daw"] },
+        { "name": "Ardour", "image": "images/ardour.png", "tags": ["audio", "musique", "daw"] },
+        { "name": "FLStudio", "image": "images/flstudio.png", "tags": ["audio", "musique", "daw"], "payant": true }
+      ]
+    },
+    {
+      "id": "bureautique",
+      "name": "Bureautique",
+      "items": [
+        { "name": "Microsoft Office LTSC Pro", "image": "images/officeltsc.png", "tags": ["bureautique"], "payant": true },
+        { "name": "OnlyOffice", "image": "images/onlyoffice.png", "tags": ["bureautique"] },
+        { "name": "LibreOffice", "image": "images/libreoffice.png", "tags": ["bureautique"] }
+      ]
+    },
+    {
+      "id": "editeurside",
+      "name": "Éditeurs et IDE",
+      "items": [
+        { "name": "Visual Studio Code", "image": "images/vscode.png", "tags": ["editeur", "code"], "group": "Éditeurs de code" },
+        { "name": "VSCodium", "image": "images/vscodium.png", "tags": ["editeur", "code"], "group": "Éditeurs de code" },
+        { "name": "Geany", "image": "images/geany.png", "tags": ["editeur", "code"], "group": "Éditeurs de code" },
+        { "name": "Arduino IDE", "image": "images/arduino.png", "tags": ["ide", "arduino", "embedded"], "group": "IDE Arduino" },
+        { "name": "DB Browser for SQLite", "image": "images/dbbrowser.png", "tags": ["ide", "sqlite", "base de données"], "group": "IDE SQLite" },
+        { "name": "PyCharm Community", "image": "images/pycharm.png", "tags": ["ide", "python"], "group": "IDE Python" },
+        { "name": "Thonny", "image": "images/thonny.png", "tags": ["ide", "python"], "group": "IDE Python" },
+        { "name": "IntelliJ IDEA Community", "image": "images/intellij.png", "tags": ["ide", "kotlin", "java"], "group": "IDE Kotlin/JAVA" },
+        { "name": "Android Studio", "image": "images/androidstudio.png", "tags": ["ide", "kotlin", "android"], "group": "IDE Kotlin/JAVA" }
+      ]
+    },
+    {
+      "id": "lecteuraudio",
+      "name": "Lecteur audio",
+      "items": [
+        { "name": "Foobar2000", "image": "images/foobar2000.png", "tags": ["audio", "lecteur", "musique"] },
+        { "name": "AIMP", "image": "images/aimp.png", "tags": ["audio", "lecteur", "musique"] },
+        { "name": "MusicBee", "image": "images/musicbee.png", "tags": ["audio", "lecteur", "musique"] }
+      ]
+    },
+    {
+      "id": "creationpdf",
+      "name": "Création et Modification PDF",
+      "items": [
+        { "name": "PDFGear", "image": "images/pdfgear.png", "tags": ["pdf", "édition"] },
+        { "name": "Stirling-PDF", "image": "images/stirling.png", "tags": ["pdf", "édition"] },
+        { "name": "PDF24 Creator", "image": "images/pdf24creator.png", "tags": ["pdf", "édition"] }
+      ]
+    },
+    {
+      "id": "lecteurpdf",
+      "name": "Lecteur PDF",
+      "items": [
+        { "name": "SumatraPDF", "image": "images/sumatrapdf.png", "tags": ["lecteur", "pdf"] },
+        { "name": "MuPDF", "image": "images/mupdf.png", "tags": ["lecteur", "pdf"] }
+      ]
+    },
+    {
+      "id": "compression",
+      "name": "Compression de fichiers",
+      "items": [
+        { "name": "NanaZip", "image": "images/nanazip.png", "tags": ["compression", "archive", "zip"] },
+        { "name": "WinRAR", "image": "images/winrar.png", "tags": ["compression", "archive", "rar"], "payant": true },
+        { "name": "7-Zip", "image": "images/7zip.png", "tags": ["compression", "archive", "zip"] }
+      ]
+    },
+    {
+      "id": "recherche",
+      "name": "Recherche de fichiers",
+      "items": [
+        { "name": "Everything", "image": "images/everything.png", "tags": ["recherche", "fichiers"] },
+        { "name": "Fluent Search", "image": "images/fluentsearch.png", "tags": ["recherche", "fichiers"] }
+      ]
+    },
+    {
+      "id": "pressepapiers",
+      "name": "Presse-papiers",
+      "items": [
+        { "name": "CopyQ", "image": "images/copyq.png", "tags": ["presse-papiers", "productivité"] }
+      ]
+    },
+    {
+      "id": "copie",
+      "name": "Copie de fichiers",
+      "items": [
+        { "name": "FastCopy", "image": "images/fastcopy.png", "tags": ["copie", "fichiers"] },
+        { "name": "Robocopy", "image": "images/robocopy.png", "tags": ["copie", "fichiers"] }
+      ]
+    },
+    {
+      "id": "transfert",
+      "name": "Envoi et transfert de fichiers",
+      "items": [
+        { "name": "LocalSend", "image": "images/localsend.png", "tags": ["fichiers", "transfert"] },
+        { "name": "PairDrop", "image": "images/pairdrop.png", "tags": ["fichiers", "transfert"] },
+        { "name": "Warpinator", "image": "images/warpinator.png", "tags": ["fichiers", "transfert"] }
+      ]
+    },
+    {
+      "id": "gravure",
+      "name": "Gravure CD/DVD/Blu-ray",
+      "items": [
+        { "name": "AnyBurn", "image": "images/anyburn.png", "tags": ["gravure", "cd", "dvd", "iso"] },
+        { "name": "PowerISO", "image": "images/poweriso.png", "tags": ["gravure", "cd", "dvd", "iso"], "payant": true }
+      ]
+    },
+    {
+      "id": "disque",
+      "name": "Surveillance des disques",
+      "items": [
+        { "name": "CrystalDiskInfo", "image": "images/crystaldiskinfo.png", "tags": ["disque", "smart", "monitoring"] }
+      ]
+    },
+    {
+      "id": "interface",
+      "name": "Personnalisation Windows",
+      "items": [
+        { "name": "ExplorerPatcher", "image": "images/explorerpatcher.png", "tags": ["windows", "interface", "personnalisation"] },
+        { "name": "WindHawk", "image": "images/windhawk.png", "tags": ["windows", "interface", "personnalisation"] }
+      ]
+    },
+    {
+      "id": "nettoyagewindows",
+      "name": "Nettoyage de Windows",
+      "items": [
+        { "name": "BleachBit", "image": "images/bleachbit.png", "tags": ["windows", "nettoyage"] },
+        { "name": "FluentCleaner", "image": "images/fluentcleaner.png", "tags": ["windows", "nettoyage"] },
+        { "name": "HDCleaner", "image": "images/hdcleaner.png", "tags": ["windows", "nettoyage"] }
+      ]
+    },
+    {
+      "id": "antivirus",
+      "name": "Antivirus",
+      "items": [
+        { "name": "Windows Defender", "image": "images/windowsdefender.png", "tags": ["antivirus", "malwares"] },
+        { "name": "Bitdefender", "image": "images/bitdefender.png", "tags": ["antivirus", "malwares"], "payant": true }
+      ]
+    },
+    {
+      "id": "analyse",
+      "name": "Analyse de malwares",
+      "items": [
+        { "name": "Emsisoft Emergency Kit", "image": "images/emsisoft.png", "tags": ["analyse", "trojan", "urgence"] },
+        { "name": "Malwarebytes", "image": "images/malwarebytes.png", "tags": ["analyse", "trojan", "urgence"] }
+      ]
+    },
+    {
+      "id": "parefeu",
+      "name": "Pare-feu",
+      "items": [
+        { "name": "Firewall App Blocker", "image": "images/firewallappblocker.png", "tags": ["pare-feu", "sécurité", "blocage"] }
+      ]
+    },
+    {
+      "id": "covertall",
+      "name": "Conversion de fichiers tout-en un",
+      "items": [
+        { "name": "File Converter", "image": "images/fileconverter.png", "tags": ["conversion", "fichiers", "multimedia"] }
+      ]
+    },
+        {
+      "id": "captureecran",
+      "name": "Enregistreurs & Capture d'écran",
+      "items": [
+        { "name": "ShareX", "image": "images/sharex.png", "tags": ["capture", "écran", "enregistrement"] },
+        { "name": "OBS Studio", "image": "images/obsstudio.png", "tags": ["capture", "écran", "streaming"] },
+        { "name": "Greenshot", "image": "images/greenshot.png", "tags": ["capture", "écran"] }
+      ]
+    },
+    {
+      "id": "conversionphoto",
+      "name": "Conversion photo",
+      "items": [
+        { "name": "ImageMagick", "image": "images/imagemagick.png", "tags": ["conversion", "photo", "image"] },
+        { "name": "Shutter Encoder", "image": "images/shutterencoder.png", "tags": ["conversion", "photo", "vidéo"] }
+      ]
+    },
+    {
+      "id": "conversionvideo",
+      "name": "Conversion vidéo",
+      "items": [
+        { "name": "HandBrake", "image": "images/handbrake.png", "tags": ["conversion", "vidéo", "encodage"] },
+        { "name": "FFmpeg", "image": "images/ffmpeg.png", "tags": ["conversion", "vidéo", "cli"] }
+      ]
+    },
+    {
+      "id": "audio",
+      "name": "Contrôle audio Windows",
+      "items": [
+        { "name": "EarTrumpet", "image": "images/eartrumpet.png", "tags": ["audio", "volume", "windows"] }
+      ]
+    },
+    {
+      "id": "navigateur",
+      "name": "Navigateur",
+      "items": [
+        { "name": "Firefox", "image": "images/firefox.png", "tags": ["firefox", "navigateur"] },
+        { "name": "Brave", "image": "images/brave.png", "tags": ["brave", "navigateur"] },
+        { "name": "LibreWolf", "image": "images/librewolf.png", "tags": ["librewolf", "navigateur"] },
+        { "name": "Vivaldi", "image": "images/vivaldi.png", "tags": ["vivaldi", "navigateur"] },
+        { "name": "DuckDuckGo", "image": "images/duckduckgo.png", "tags": ["duckduckgo", "navigateur"] }
+      ]
+    }
+  ]
+}
