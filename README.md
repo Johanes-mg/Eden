@@ -4,7 +4,7 @@
   <img src="images/logo.png" alt="Eden" width="120">
 </div>
 
-**Le jardin des alternatives numériques — un annuaire curaté d'outils choisis pour leur sobriété, leur respect de l'utilisateur et leur absence de bloatware.**
+**Le jardin des alternatives numériques un annuaire curaté d'outils choisis pour leur sobriété, leur respect de l'utilisateur et leur absence de bloatware.**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![HTML](https://img.shields.io/badge/HTML-5-e34c26.svg?style=flat-square)](https://developer.mozilla.org/fr/docs/Web/HTML)

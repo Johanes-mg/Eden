@@ -147,7 +147,7 @@
     const hero = el("section", "hero");
     const h1 = document.createElement("h1");
     h1.innerHTML = "Cultivez votre <em>liberté numérique.</em>";
-    const p = el("p", null, "Aucune limite n'est un obstacle.");
+    const p = el("p", null, "Le jardin où les outils poussent librement.");
     hero.appendChild(h1);
     hero.appendChild(p);
     app.appendChild(hero);
@@ -176,7 +176,7 @@
       el(
         "p",
         "about-lead",
-        "Eden n'est pas un simple annuaire de logiciels gratuits. C'est une sélection exigeante d'outils choisis pour ce qu'ils apportent vraiment : liberté, sobriété, respect de l'utilisateur. Un graal, pas un catalogue.",
+        "Eden n'est pas un simple annuaire de logiciels gratuits. C'est une sélection exigeante d'outils choisis pour ce qu'ils apportent vraiment : liberté, sobriété, respect de l'utilisateur.",
       ),
     );
     wrap.appendChild(intro);
@@ -192,7 +192,7 @@
       },
       {
         title: "Nos principes",
-        text: "Aucune publicité, aucun tracking, aucun classement sponsorisé. Vie privée par défaut. Aucune dépendance imposée à un écosystème fermé. Eden est un site statique : un fichier HTML, un CSS, un JS, un JSON.",
+        text: "Aucune publicité, aucun tracking, aucun classement sponsorisé. Vie privée par défaut. Aucune dépendance imposée à un écosystème fermé.",
       },
     ];
 
