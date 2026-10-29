@@ -64,11 +64,20 @@
     },
     {
       "id": "lecteuraudio",
-      "name": "Lecteur audio",
+      "name": "Lecteur Audio",
       "items": [
         { "name": "Foobar2000", "image": "images/foobar2000.png", "tags": ["audio", "lecteur", "musique"] },
         { "name": "AIMP", "image": "images/aimp.png", "tags": ["audio", "lecteur", "musique"] },
         { "name": "MusicBee", "image": "images/musicbee.png", "tags": ["audio", "lecteur", "musique"] }
+      ]
+    },
+    {
+      "id": "lecteurvideo",
+      "name": "Lecteur Video",
+      "items": [
+        { "name": "VLC", "image": "images/vlc.png", "tags": ["video", "lecteur", "film"] },
+        { "name": "Pot Player", "image": "images/potplayer.png", "tags": ["video", "lecteur", "film"] },
+        { "name": "MPV Player", "image": "images/mpv.png", "tags": ["video", "lecteur", "film"] }
       ]
     },
     {
@@ -94,7 +103,8 @@
       "items": [
         { "name": "NanaZip", "image": "images/nanazip.png", "tags": ["compression", "archive", "zip"] },
         { "name": "WinRAR", "image": "images/winrar.png", "tags": ["compression", "archive", "rar"], "payant": true },
-        { "name": "7-Zip", "image": "images/7zip.png", "tags": ["compression", "archive", "zip"] }
+        { "name": "7-Zip", "image": "images/7zip.png", "tags": ["compression", "archive", "zip"] },
+        { "name": "PeaZip", "image": "images/peazip.png", "tags": ["compression", "archive", "zip"] }
       ]
     },
     {
@@ -178,10 +188,12 @@
       ]
     },
     {
-      "id": "parefeu",
-      "name": "Pare-feu",
+      "id": "torrent",
+      "name": "Télechargment de Torrent",
       "items": [
-        { "name": "Firewall App Blocker", "image": "images/firewallappblocker.png", "tags": ["pare-feu", "sécurité", "blocage"] }
+        { "name": "QBTorrent", "image": "images/qbtorrent.png", "tags": ["telechargement", "torrent"] },
+        { "name": "uTorrent", "image": "images/utorrent.png", "tags": ["telechargement", "torrent"] },
+        { "name": "Transmission", "image": "images/transmission.png", "tags": ["telechargement", "torrent"] }
       ]
     },
     {

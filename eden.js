@@ -4,10 +4,140 @@
   const app = document.getElementById("app");
   const searchInput = document.getElementById("searchInput");
   const navLinks = document.querySelectorAll("[data-nav]");
+  const langTrigger = document.getElementById("langTrigger");
+  const langList = document.getElementById("langList");
+  const langLabel = document.getElementById("langLabel");
 
   let DB = { categories: [] };
   let query = "";
+  let currentLang = "en";
 
+  const I18N = {
+    en: {
+      "nav.home": "Home",
+      "nav.alternatives": "Alternatives",
+      "nav.about": "About",
+      "footer.tagline": "The garden of free alternatives.",
+      "search.placeholder": "Search a software...",
+      "hero.title.pre": "Cultivate your",
+      "hero.title.em": "digital freedom.",
+      "hero.subtitle": "The garden where tools grow freely.",
+      "about.title": "About Eden",
+      "about.lead":
+        "Eden is not just a directory of software. It is a demanding selection of tools chosen for what they truly bring: freedom, sobriety, quality.",
+      "about.block1.title": "Our mission",
+      "about.block1.text":
+        "Gather the best digital tools, whether free, open source or paid. Price is not the criterion — the quality of the experience is.",
+      "about.block2.title": "Our method",
+      "about.block2.text":
+        "Every entry is tested, documented, maintained. We clearly distinguish what is free, what is open source, and what is paid. A red dot marks the commercial software we kept anyway, because it is worth it.",
+      "about.block3.title": "Tagline",
+      "about.block3.text":
+        "Productivity is our ultimate driver. We list the tools you actually need — not just famous commercial software, but true quality.",
+      "about.stack.title": "Under the hood",
+      "about.stack.l1": "Minimalist interface",
+      "about.stack.l2": "Data loaded from a single source",
+      "about.stack.l3": "No external dependency",
+      "about.github": "johanes.github.io",
+      "empty.noresult": "No result for",
+    },
+    fr: {
+      "nav.home": "Accueil",
+      "nav.alternatives": "Alternatives",
+      "nav.about": "À propos",
+      "footer.tagline": "Le jardin des alternatives libres.",
+      "search.placeholder": "Rechercher un logiciel...",
+      "hero.title.pre": "Cultivez votre",
+      "hero.title.em": "liberté numérique.",
+      "hero.subtitle": "Le jardin où les outils poussent librement.",
+      "about.title": "À propos d'Eden",
+      "about.lead":
+        "Eden n'est pas un simple annuaire de logiciels. C'est une sélection exigeante d'outils choisis pour ce qu'ils apportent vraiment : liberté, sobriété, qualité.",
+      "about.block1.title": "Notre mission",
+      "about.block1.text":
+        "Rassembler les meilleurs outils numériques, qu'ils soient libres, gratuits ou payants. Le prix n'est pas un critère, la qualité de l'expérience l'est.",
+      "about.block2.title": "Notre méthode",
+      "about.block2.text":
+        "Chaque entrée est testée, documentée, maintenue. Nous distinguons clairement ce qui est libre, ce qui est gratuit, et ce qui est payant. Un point rouge signale les logiciels commerciaux retenus malgré tout, parce qu'ils valent le détour.",
+      "about.block3.title": "Slogan",
+      "about.block3.text":
+        "La productivité est notre moteur absolu. On répertorie les outils dont vous avez réellement besoin — pas juste des outils commerciaux célèbres, mais de la haute qualité.",
+      "about.stack.title": "Sous le capot",
+      "about.stack.l1": "Interface minimaliste",
+      "about.stack.l2": "Données chargées depuis une seule source",
+      "about.stack.l3": "Aucune dépendance externe",
+      "about.github": "johanes.github.io",
+      "empty.noresult": "Aucun résultat pour",
+    },
+  };
+
+  function t(key) {
+    return (I18N[currentLang] && I18N[currentLang][key]) || key;
+  }
+
+  /* ---------- LANGUE ---------- */
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    langLabel.textContent = lang === "fr" ? "Français" : "English";
+
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
+      const key = node.getAttribute("data-i18n");
+      node.textContent = t(key);
+    });
+
+    searchInput.placeholder = t("search.placeholder");
+
+    langList.querySelectorAll("li").forEach((li) => {
+      li.classList.toggle("active", li.dataset.lang === lang);
+    });
+
+    // Re-render la page courante pour appliquer la langue au contenu dynamique
+    navigate();
+  }
+
+  function setLang(lang) {
+    localStorage.setItem("eden.lang", lang);
+    applyLang(lang);
+    closeLangMenu();
+  }
+
+  function openLangMenu() {
+    langList.classList.add("open");
+    langTrigger.setAttribute("aria-expanded", "true");
+  }
+
+  function closeLangMenu() {
+    langList.classList.remove("open");
+    langTrigger.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleLangMenu() {
+    if (langList.classList.contains("open")) {
+      closeLangMenu();
+    } else {
+      openLangMenu();
+    }
+  }
+
+  langTrigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleLangMenu();
+  });
+
+  langList.querySelectorAll("li").forEach((li) => {
+    li.addEventListener("click", () => setLang(li.dataset.lang));
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".lang-menu")) closeLangMenu();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLangMenu();
+  });
+
+  /* ---------- ROUTER ---------- */
   function getRoute() {
     const hash = window.location.hash.replace(/^#\/?/, "");
     return hash || "home";
@@ -49,7 +179,7 @@
 
     if (item.payant) {
       const dot = el("span", "item-dot");
-      dot.title = "Payant";
+      dot.title = currentLang === "fr" ? "Payant" : "Paid";
       box.appendChild(dot);
     }
 
@@ -137,18 +267,19 @@
     icon.alt = "";
     icon.className = "empty-icon";
     wrap.appendChild(icon);
-    wrap.appendChild(el("p", null, "Aucun résultat pour « " + query + " »"));
+    wrap.appendChild(el("p", null, t("empty.noresult") + " « " + query + " »"));
     return wrap;
   }
 
   function renderHome() {
     app.innerHTML = "";
+    app.classList.remove("app-top");
     app.classList.add("app-centered");
 
     const hero = el("section", "hero");
     const h1 = document.createElement("h1");
-    h1.innerHTML = "Cultivez votre <em>liberté numérique.</em>";
-    const p = el("p", null, "Le jardin où les outils poussent librement.");
+    h1.innerHTML = t("hero.title.pre") + " <em>" + t("hero.title.em") + "</em>";
+    const p = el("p", null, t("hero.subtitle"));
     hero.appendChild(h1);
     hero.appendChild(p);
     app.appendChild(hero);
@@ -157,6 +288,7 @@
   function renderAll() {
     app.innerHTML = "";
     app.classList.remove("app-centered");
+    app.classList.add("app-top");
 
     const cats = filteredCategories();
 
@@ -171,33 +303,19 @@
   function renderAbout() {
     app.innerHTML = "";
     app.classList.remove("app-centered");
+    app.classList.add("app-top");
 
     const wrap = el("div", "about-content");
 
     const intro = el("div", "about-intro");
-    intro.appendChild(el("h2", null, "À propos d'Eden"));
-    intro.appendChild(
-      el(
-        "p",
-        "about-lead",
-        "Eden n'est pas un simple annuaire de logiciels gratuits. C'est une sélection exigeante d'outils choisis pour ce qu'ils apportent vraiment : liberté, sobriété, respect de l'utilisateur.",
-      ),
-    );
+    intro.appendChild(el("h2", null, t("about.title")));
+    intro.appendChild(el("p", "about-lead", t("about.lead")));
     wrap.appendChild(intro);
 
     const sections = [
-      {
-        title: "Notre mission",
-        text: "Rassembler les meilleurs outils numériques — libres, gratuits ou payants — à condition qu'ils soient honnêtes, sans bloatware, sans suivi, et qu'ils rendent le contrôle à l'utilisateur. Le prix n'est pas un critère, la qualité de l'expérience l'est.",
-      },
-      {
-        title: "Notre méthode",
-        text: "Chaque entrée est testée, documentée, maintenue. Nous distinguons clairement ce qui est libre, ce qui est gratuit, et ce qui est payant — un point rouge signale les logiciels commerciaux retenus malgré tout, parce qu'ils valent le détour.",
-      },
-      {
-        title: "Nos principes",
-        text: "Aucune publicité, aucun tracking, aucun classement sponsorisé. Vie privée par défaut. Aucune dépendance imposée à un écosystème fermé.",
-      },
+      { title: t("about.block1.title"), text: t("about.block1.text") },
+      { title: t("about.block2.title"), text: t("about.block2.text") },
+      { title: t("about.block3.title"), text: t("about.block3.text") },
     ];
 
     sections.forEach((sec) => {
@@ -208,18 +326,16 @@
     });
 
     const stack = el("div", "about-block");
-    stack.appendChild(el("h3", "about-block-title", "Sous le capot"));
+    stack.appendChild(el("h3", "about-block-title", t("about.stack.title")));
     const stackList = el("ul", "about-stack");
-    [
-      "Interface minimaliste",
-      "Données chargées depuis une seule source",
-      "Aucune dépendance externe",
-    ].forEach((line) => {
-      const li = el("li");
-      li.appendChild(el("span", "about-bullet", "—"));
-      li.appendChild(document.createTextNode(" " + line));
-      stackList.appendChild(li);
-    });
+    [t("about.stack.l1"), t("about.stack.l2"), t("about.stack.l3")].forEach(
+      (line) => {
+        const li = el("li");
+        li.appendChild(el("span", "about-bullet", "—"));
+        li.appendChild(document.createTextNode(" " + line));
+        stackList.appendChild(li);
+      },
+    );
     stack.appendChild(stackList);
     wrap.appendChild(stack);
 
@@ -237,7 +353,7 @@
     ghIcon.height = 20;
     btn.appendChild(ghIcon);
 
-    btn.appendChild(el("span", "github-btn-label", "johanes.github.io"));
+    btn.appendChild(el("span", "github-btn-label", t("about.github")));
 
     const arrow = document.createElement("img");
     arrow.src = "images/arrow-right.png";
@@ -267,6 +383,11 @@
       }
     }, 180);
   });
+
+  /* ---------- BOOT ---------- */
+  const savedLang = localStorage.getItem("eden.lang");
+  currentLang = savedLang === "fr" || savedLang === "en" ? savedLang : "en";
+  applyLang(currentLang);
 
   fetch("eden.json")
     .then((r) => r.json())

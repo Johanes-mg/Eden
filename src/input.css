@@ -1,0 +1,461 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-sans bg-bg text-text leading-relaxed antialiased;
+    min-height: 100vh;
+    padding-top: 68px;
+    padding-bottom: 56px;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .container-eden {
+    @apply mx-auto px-6 w-full;
+  }
+
+  .eden-header {
+    @apply fixed top-0 left-0 right-0 h-header bg-bg/90 backdrop-blur border-b border-border z-[100];
+  }
+
+  .header-inner {
+    @apply flex items-center h-full relative gap-4;
+  }
+
+  .brand {
+    @apply flex items-center gap-2.5 no-underline text-text shrink-0 z-[1];
+  }
+
+  .brand-logo {
+    @apply w-7 h-7 object-contain;
+  }
+
+  .brand-name {
+    @apply font-serif text-[22px] font-medium tracking-tight;
+  }
+
+  .nav {
+    @apply absolute left-1/2 -translate-x-1/2 flex items-center gap-1;
+  }
+
+  .nav a {
+    @apply px-3.5 py-2 rounded-sm text-text-muted no-underline text-sm font-medium whitespace-nowrap hover:text-text hover:bg-surface-alt;
+  }
+
+  .nav a.active {
+    @apply text-text bg-surface-alt;
+  }
+
+  /* -------- Menu langue -------- */
+  .lang-menu {
+    @apply relative;
+  }
+
+  .lang-trigger {
+    @apply inline-flex items-center gap-1.5 px-3.5 py-2 rounded-sm text-text-muted text-sm font-medium whitespace-nowrap hover:text-text hover:bg-surface-alt;
+  }
+
+  .lang-caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    opacity: 0.6;
+  }
+
+  .lang-list {
+    @apply absolute top-full right-0 mt-1 min-w-[140px] rounded-sm border border-border bg-surface shadow-lg py-1;
+    display: none;
+    list-style: none;
+    z-index: 200;
+  }
+
+  .lang-list.open {
+    display: block;
+  }
+
+  .lang-list li {
+    @apply px-4 py-2 text-sm text-text-muted cursor-pointer hover:bg-surface-alt hover:text-text;
+  }
+
+  .lang-list li.active {
+    @apply text-text bg-surface-alt font-medium;
+  }
+
+  /* -------- Recherche -------- */
+  .search-wrap {
+    @apply ml-auto relative w-60 shrink-0 z-[1];
+  }
+
+  .search-icon {
+    @apply absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 opacity-40 pointer-events-none;
+  }
+
+  #searchInput {
+    @apply w-full py-2.5 pl-9 pr-3.5 border border-border rounded-sm bg-surface font-sans text-sm text-text outline-none focus:border-accent placeholder:text-text-muted;
+  }
+
+  /* -------- Application -------- */
+  #app {
+    min-height: calc(100vh - 68px - 56px);
+    @apply flex flex-col justify-center pt-8 pb-20;
+  }
+
+  .app-centered {
+    @apply justify-center;
+  }
+
+  .app-top {
+    @apply justify-start;
+  }
+
+  /* -------- Hero -------- */
+  .hero {
+    @apply text-center p-0;
+  }
+
+  .hero h1 {
+    @apply font-serif font-normal tracking-tight leading-tight mb-4 text-text;
+    font-size: clamp(1.75rem, 5vw, 3.2rem);
+  }
+
+  .hero h1 em {
+    @apply not-italic text-white bg-[#3b6fd1] px-2.5 py-0.5 rounded-md;
+  }
+
+  .hero p {
+    @apply text-text-muted mx-auto;
+    font-size: clamp(15px, 2vw, 17px);
+  }
+
+  /* -------- Catégories -------- */
+  .category-section {
+    @apply mb-14;
+  }
+
+  .category-header {
+    @apply mb-5 pb-3.5 border-b border-border;
+  }
+
+  .category-title {
+    @apply font-serif text-[22px] font-medium tracking-tight;
+  }
+
+  .subgroup {
+    @apply mb-10;
+  }
+
+  .subgroup-title {
+    @apply font-serif text-[17px] font-medium tracking-tight mb-3.5 text-text-muted;
+  }
+
+  .items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    @apply gap-4;
+  }
+
+  .item {
+    @apply relative bg-surface border border-border rounded flex items-center gap-3.5 min-w-0;
+    padding: 18px;
+  }
+
+  .item-dot {
+    @apply absolute top-2 right-2 w-2 h-2 rounded-full bg-[#d93636];
+  }
+
+  .item-logo {
+    @apply shrink-0 w-10 h-10 object-contain rounded-lg bg-surface-alt p-1.5;
+  }
+
+  .item-info {
+    @apply flex flex-col gap-1 min-w-0 flex-1;
+  }
+
+  .item-title {
+    @apply text-[17px] font-semibold tracking-tight text-text break-words;
+  }
+
+  /* -------- About -------- */
+  .about-content {
+    @apply mx-auto pt-4;
+  }
+
+  .about-intro h2 {
+    @apply font-serif font-normal tracking-tight leading-tight mb-6;
+    font-size: clamp(28px, 5vw, 40px);
+  }
+
+  .about-lead {
+    @apply leading-relaxed text-text mb-12;
+    font-size: clamp(15px, 2vw, 18px);
+  }
+
+  .about-block {
+    @apply mb-10 pb-8 border-b border-border last:border-b-0;
+  }
+
+  .about-block-title {
+    @apply font-serif text-[22px] font-medium tracking-tight mb-3 text-text;
+  }
+
+  .about-block p {
+    @apply text-base leading-relaxed text-text-muted;
+  }
+
+  .about-stack {
+    @apply list-none p-0 m-0;
+  }
+
+  .about-stack li {
+    @apply text-[15px] leading-relaxed text-text-muted py-1;
+  }
+
+  .about-bullet {
+    @apply text-accent font-semibold mr-1;
+  }
+
+  .about-cta {
+    @apply mt-12 flex justify-center;
+  }
+
+  .github-btn {
+    @apply inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-text text-bg no-underline rounded-sm text-[15px] font-medium tracking-wide max-w-full hover:bg-accent;
+  }
+
+  .github-btn-icon {
+    @apply w-5 h-5 object-contain shrink-0;
+    filter: brightness(0) invert(1);
+  }
+
+  .github-btn-label {
+    @apply font-sans break-words min-w-0;
+  }
+
+  .github-btn-arrow {
+    @apply w-4 h-4 object-contain shrink-0;
+    filter: brightness(0) invert(1);
+  }
+
+  /* -------- Empty -------- */
+  .empty {
+    @apply text-center py-20 px-5 text-text-muted;
+  }
+
+  .empty-icon {
+    @apply w-12 h-12 opacity-30 mb-4;
+  }
+
+  /* -------- Footer -------- */
+  .eden-footer {
+    @apply fixed bottom-0 left-0 right-0 h-footer bg-bg border-t border-border flex items-center text-[13px] text-text-muted text-center z-[100];
+  }
+
+  .eden-footer .container-eden {
+    @apply flex justify-center items-center h-full px-4;
+  }
+
+  .eden-footer p {
+    @apply break-words;
+  }
+}
+
+@layer utilities {
+  @media (max-width: 1024px) {
+    .search-wrap {
+      width: 200px;
+    }
+    .nav a,
+    .lang-trigger {
+      @apply px-2.5 text-[13px];
+    }
+  }
+
+  @media (max-width: 820px) {
+    body {
+      padding-top: 168px;
+    }
+    #app {
+      @apply pt-7;
+    }
+    .eden-header {
+      height: auto;
+    }
+    .header-inner {
+      @apply flex-wrap h-auto py-3.5 px-0 gap-2.5 justify-center;
+    }
+    .brand {
+      order: 1;
+    }
+    .search-wrap {
+      order: 2;
+      @apply w-full ml-0;
+    }
+    .nav {
+      order: 3;
+      @apply static translate-x-0 w-full justify-center m-0 pt-1 border-t border-border flex-wrap;
+    }
+    .nav a,
+    .lang-trigger {
+      @apply px-3;
+    }
+    .lang-list {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container-eden {
+      @apply px-4;
+    }
+    body {
+      padding-top: 160px;
+    }
+    #app {
+      padding-top: 24px;
+      padding-bottom: 60px;
+    }
+    .brand-name {
+      @apply text-xl;
+    }
+    .items-grid {
+      grid-template-columns: 1fr;
+    }
+    .category-title {
+      @apply text-xl;
+    }
+    .item {
+      padding: 16px;
+    }
+    .item-title {
+      @apply text-base;
+    }
+    .about-lead {
+      @apply mb-8;
+    }
+    .about-block {
+      @apply mb-8 pb-6;
+    }
+    .about-block-title {
+      @apply text-xl;
+    }
+    .github-btn {
+      @apply w-full px-5;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container-eden {
+      @apply px-3.5;
+    }
+    body {
+      padding-top: 156px;
+      padding-bottom: 52px;
+    }
+    #app {
+      padding-top: 20px;
+      padding-bottom: 52px;
+    }
+    .header-inner {
+      @apply py-3 px-0 gap-2;
+    }
+    .brand-logo {
+      @apply w-6 h-6;
+    }
+    .brand-name {
+      @apply text-lg;
+    }
+    .nav {
+      @apply gap-0.5;
+    }
+    .nav a,
+    .lang-trigger {
+      @apply px-2 py-1.5 text-xs;
+    }
+    #searchInput {
+      @apply text-[13px] py-2 pl-8 pr-3;
+    }
+    .search-icon {
+      @apply left-2.5 w-3.5 h-3.5;
+    }
+    .hero h1 {
+      font-size: 26px;
+    }
+    .hero h1 em {
+      @apply px-2;
+    }
+    .hero p {
+      @apply text-sm;
+    }
+    .category-section {
+      @apply mb-10;
+    }
+    .subgroup {
+      @apply mb-7;
+    }
+    .subgroup-title {
+      @apply text-[15px];
+    }
+    .items-grid {
+      @apply gap-3;
+    }
+    .item {
+      @apply gap-3;
+      padding: 14px;
+    }
+    .item-logo {
+      @apply w-9 h-9;
+    }
+    .item-title {
+      @apply text-[15px];
+    }
+    .empty {
+      @apply px-4;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    .eden-footer {
+      @apply text-xs;
+    }
+    .github-btn-label {
+      @apply text-sm;
+    }
+    .lang-list {
+      min-width: 120px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    body {
+      padding-top: 152px;
+    }
+    .nav a,
+    .lang-trigger {
+      @apply px-1.5 py-1 text-[11px];
+    }
+    .brand-name {
+      @apply text-base;
+    }
+    .hero h1 {
+      font-size: 22px;
+    }
+  }
+}

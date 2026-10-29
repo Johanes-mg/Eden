@@ -1,0 +1,12 @@
+{
+  "name": "eden",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./eden.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./eden.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
