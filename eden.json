@@ -69,7 +69,8 @@
         { "name": "DB Browser for SQLite", "image": "images/dbbrowser.png", "tags": ["ide", "sqlite"], "platform": ["windows", "linux"], "group": "IDE SQLite", "groupEn": "SQLite IDE" },
         { "name": "PyCharm Community", "image": "images/pycharm.png", "tags": ["ide", "python"], "platform": ["windows", "linux"], "group": "IDE Python", "groupEn": "Python IDE" },
         { "name": "Thonny", "image": "images/thonny.png", "tags": ["ide", "python"], "platform": ["windows", "linux"], "group": "IDE Python", "groupEn": "Python IDE" },
-        { "name": "IntelliJ IDEA Community", "image": "images/intellij.png", "tags": ["ide", "kotlin", "java"], "platform": ["windows", "linux"], "group": "IDE Kotlin/JAVA", "groupEn": "Kotlin/JAVA IDE" }
+        { "name": "IntelliJ IDEA Community", "image": "images/intellij.png", "tags": ["ide", "kotlin", "java"], "platform": ["windows", "linux"], "group": "IDE Kotlin/JAVA", "groupEn": "Kotlin/JAVA IDE" },
+        { "name": "Android Studio", "image": "images/androidstudio.png", "tags": ["ide", "kotlin", "java"], "platform": ["windows", "linux"], "group": "IDE Kotlin/JAVA", "groupEn": "Kotlin/JAVA IDE" }
       ]
     },
     {
@@ -152,7 +153,9 @@
       "name": "Gestionnaire de mots de passe",
       "nameEn": "Password manager",
       "items": [
-        { "name": "KeePassDX", "image": "images/keepassdx.png", "tags": ["sécurité", "mots de passe"], "platform": ["windows", "android"] }
+        { "name": "KeePassXC", "image": "images/keepassxc.png", "tags": ["sécurité", "mots de passe"], "platform": ["windows"] },
+        { "name": "KeePassDX", "image": "images/keepassdx.png", "tags": ["sécurité", "mots de passe"], "platform": ["android"] },
+        { "name": "Prototon Pass", "image": "images/protonpass.png", "tags": ["sécurité", "mots de passe"], "platform": ["windows", "android"] }
       ]
     },
     {
@@ -215,7 +218,7 @@
       "items": [
         { "name": "BleachBit", "image": "images/bleachbit.png", "tags": ["nettoyage"], "platform": ["windows", "linux"] },
         { "name": "FluentCleaner", "image": "images/fluentcleaner.png", "tags": ["nettoyage"], "platform": "windows" },
-        { "name": "HDCleaner", "image": "images/hdcleaner.png", "tags": ["nettoyage"], "platform": "windows" }
+        { "name": "HDCleaner", "image": "images/hdcleaner.jpg", "tags": ["nettoyage"], "platform": "windows" }
       ]
     },
     {
@@ -223,7 +226,8 @@
       "name": "Antivirus",
       "nameEn": "Antivirus",
       "items": [
-        { "name": "Windows Defender", "image": "images/windowsdefender.png", "tags": ["antivirus"], "platform": "windows" }
+        { "name": "Windows Defender", "image": "images/windowsdefender.png", "tags": ["antivirus"], "platform": "windows" },
+        { "name": "Bit Defender", "image": "images/bitdefender.png", "tags": ["antivirus"], "platform": "windows", "payant":true }
       ]
     },
     {
@@ -231,7 +235,8 @@
       "name": "Analyse de malwares",
       "nameEn": "Malware analysis",
       "items": [
-        { "name": "Emsisoft Emergency Kit", "image": "images/emsisoft.png", "tags": ["analyse", "urgence"], "platform": "windows" }
+        { "name": "Emsisoft Emergency Kit", "image": "images/emsisoft.png", "tags": ["analyse", "trojan", "urgence"], "platform": "windows" },
+        { "name": "Malwarebtyes", "image": "images/malwarebytes.png", "tags": ["analyse", "trojan", "urgence"], "platform": "windows" }
       ]
     },
     {
@@ -285,7 +290,8 @@
       "name": "Détection de musiques",
       "nameEn": "Music detection",
       "items": [
-        { "name": "Rush", "image": "images/rush.png", "tags": ["musique", "détection"], "platform": "android" }
+        { "name": "Rush", "image": "images/rush.png", "tags": ["musique", "détection"], "platform": "android" },
+        { "name": "Shazam", "image": "images/shazam.png", "tags": ["musique", "détection"], "platform": "android" }
       ]
     },
     {
@@ -293,7 +299,8 @@
       "name": "Cartes",
       "nameEn": "Maps",
       "items": [
-        { "name": "CoMAPS", "image": "images/comaps.png", "tags": ["cartes", "navigation"], "platform": "android" }
+        { "name": "CoMAPS", "image": "images/comaps.png", "tags": ["cartes", "navigation"], "platform": "android" },
+        { "name": "Organic Maps", "image": "images/organic maps.png", "tags": ["cartes", "navigation", "maps"], "platform": "android", "payant": true }
       ]
     },
     {
@@ -313,15 +320,19 @@
         { "name": "Brave", "image": "images/brave.png", "tags": ["navigateur"], "platform": ["windows", "linux", "android"] },
         { "name": "LibreWolf", "image": "images/librewolf.png", "tags": ["navigateur"], "platform": ["windows", "linux"] },
         { "name": "Vivaldi", "image": "images/vivaldi.png", "tags": ["navigateur"], "platform": ["windows", "linux", "android"] },
-        { "name": "DuckDuckGo", "image": "images/duckduckgo.png", "tags": ["navigateur"], "platform": ["windows", "android"] }
+        { "name": "DuckDuckGo", "image": "images/duckduckgo.png", "tags": ["navigateur"], "platform": ["windows", "android"] },
+        { "name": "Mullvad Browser", "image": "images/duckduckgo.png", "tags": ["navigateur"], "platform": ["windows", "android"] }
       ]
     },
     {
       "id": "reseauxsociaux",
-      "name": "Réseaux sociaux",
-      "nameEn": "Social networks",
+      "name": "Réseaux sociaux et Messagerie",
+      "nameEn": "Social networks and chats",
       "items": [
-        { "name": "Mastodon", "image": "images/mastodon.png", "tags": ["social", "fédéré"], "platform": ["windows", "linux", "android"] }
+        { "name": "Mastodon", "image": "images/mastodon.png", "tags": ["social", "fédéré"], "platform": ["windows", "linux", "android"] },
+        { "name": "Bluesky", "image": "images/bluesky.png", "tags": ["social", "fédéré"], "platform": ["windows", "linux", "android"] },
+        { "name": "Signal", "image": "images/signal.png", "tags": ["social", "fédéré"], "platform": ["windows", "linux", "android"] },
+        { "name": "Discord", "image": "images/discord.png", "tags": ["social", "fédéré"], "platform": ["windows", "linux", "android"], "payant": true }
       ]
     },
     {
@@ -330,6 +341,7 @@
       "nameEn": "Artificial intelligence",
       "items": [
         { "name": "DeepSeek", "image": "images/deepseek.png", "tags": ["ia", "chat"], "platform": ["windows", "linux", "android"] },
+        { "name": "Mistral", "image": "images/mistral.png", "tags": ["ia", "chat"], "platform": ["windows", "linux", "android"] },
         { "name": "Gemini", "image": "images/gemini.png", "tags": ["ia", "chat"], "platform": ["windows", "android"], "payant": true },
         { "name": "Perplexity", "image": "images/perplexity.png", "tags": ["ia", "recherche"], "platform": ["windows", "android"], "payant": true }
       ]

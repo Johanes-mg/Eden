@@ -18,7 +18,7 @@
       "nav.home": "Home",
       "nav.alternatives": "Alternatives",
       "nav.about": "About",
-      "footer.tagline": "The garden of free alternatives.",
+      "footer.tagline": "© Johanes-mg - The garden of alternatives.",
       "search.placeholder": "Search a software...",
       "hero.title.pre": "Cultivate your",
       "hero.title.em": "digital freedom.",
@@ -32,13 +32,13 @@
         "Eden is not just a directory of software. It is a demanding selection of tools chosen for what they truly bring: freedom, sobriety, quality.",
       "about.block1.title": "Our mission",
       "about.block1.text":
-        "Gather the best digital tools, whether free, open source or paid. Price is not the criterion, the quality of the experience is.",
+        "Gather the best digital tools, whether free, open source or paid. Price is not the criterion — the quality of the experience is.",
       "about.block2.title": "Our method",
       "about.block2.text":
         "Every entry is tested, documented, maintained. We clearly distinguish what is free, what is open source, and what is paid. A red dot marks the commercial software we kept anyway, because it is worth it.",
       "about.block3.title": "Tagline",
       "about.block3.text":
-        "Productivity is our ultimate driver. We list the tools you actually need, not just famous commercial software, but true quality.",
+        "Productivity is our ultimate driver. We list the tools you actually need — not just famous commercial software, but true quality.",
       "about.stack.title": "Under the hood",
       "about.stack.l1": "Minimalist interface",
       "about.stack.l2": "Data loaded from a single source",
@@ -50,7 +50,7 @@
       "nav.home": "Accueil",
       "nav.alternatives": "Alternatives",
       "nav.about": "À propos",
-      "footer.tagline": "Le jardin des alternatives libres.",
+      "footer.tagline": "© Johanes-mg - Le jardin des alternatives.",
       "search.placeholder": "Rechercher un logiciel...",
       "hero.title.pre": "Cultivez votre",
       "hero.title.em": "liberté numérique.",
@@ -92,7 +92,6 @@
     return currentLang === "en" && item.groupEn ? item.groupEn : item.group;
   }
 
-  /* ---------- LANGUE ---------- */
   function applyLang(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
@@ -150,7 +149,6 @@
     if (e.key === "Escape") closeLangMenu();
   });
 
-  /* ---------- ROUTER ---------- */
   function getRoute() {
     const hash = window.location.hash.replace(/^#\/?/, "");
     return hash || "home";
@@ -300,7 +298,6 @@
     return wrap;
   }
 
-  /* ---------- PLATFORM TABS ---------- */
   function buildPlatformTabs() {
     const wrap = el("div", "platform-tabs");
     const platforms = [
@@ -338,7 +335,6 @@
     return wrap;
   }
 
-  /* ---------- PAGES ---------- */
   function renderHome() {
     app.innerHTML = "";
     app.classList.remove("app-top");
@@ -445,15 +441,32 @@
     app.appendChild(wrap);
   }
 
-  /* ---------- SEARCH ---------- */
+  function resetSearch() {
+    query = "";
+    if (searchInput.value !== "") {
+      searchInput.value = "";
+    }
+    if (getRoute() !== "alternatives") {
+      window.location.hash = "#/alternatives";
+    } else {
+      renderAll();
+    }
+  }
+
   let searchTimer;
   searchInput.addEventListener("input", (e) => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
-      query = e.target.value.trim();
-      if (query === "") return;
-      const route = getRoute();
-      if (route !== "alternatives") {
+      const value = e.target.value.trim();
+
+      if (value === "") {
+        resetSearch();
+        return;
+      }
+
+      query = value;
+
+      if (getRoute() !== "alternatives") {
         window.location.hash = "#/alternatives";
       } else {
         renderAll();
@@ -461,7 +474,10 @@
     }, 180);
   });
 
-  /* ---------- BOOT ---------- */
+  searchInput.addEventListener("search", () => {
+    resetSearch();
+  });
+
   const savedLang = localStorage.getItem("eden.lang");
   currentLang = savedLang === "fr" || savedLang === "en" ? savedLang : "en";
 
