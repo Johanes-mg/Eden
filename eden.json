@@ -11,7 +11,10 @@
         { "name": "Manjaro Linux", "image": "images/manjarolinux.png", "tags": ["os", "linux"], "platform": "os" },
         { "name": "CachyOS", "image": "images/cachyos.png", "tags": ["os", "linux"], "platform": "os" },
         { "name": "ZorinOS", "image": "images/zorinos.png", "tags": ["os", "linux"], "platform": "os" },
-        { "name": "Windows LTSC IoT Entreprise", "image": "images/windowsltsc.png", "tags": ["os", "windows"], "platform": "os", "payant": true }
+        { "name": "Fedora", "image": "images/fedora.png", "tags": ["os", "linux"], "platform": "os" },
+        { "name": "PopOS", "image": "images/popos.png", "tags": ["os", "linux"], "platform": "os" },
+        { "name": "Windows LTSC IoT Entreprise", "image": "images/windowsltsc.png", "tags": ["os", "windows"], "platform": "os", "payant": true },
+        { "name": "Arch Linux", "image": "images/archlinux.png", "tags": ["os", "linux"], "platform": "os" }
       ]
     },
     {
