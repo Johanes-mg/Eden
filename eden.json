@@ -300,7 +300,7 @@
       "nameEn": "Maps",
       "items": [
         { "name": "CoMAPS", "image": "images/comaps.png", "tags": ["cartes", "navigation"], "platform": "android" },
-        { "name": "Organic Maps", "image": "images/organicmaps.png", "tags": ["cartes", "navigation", "maps"], "platform": "android", "payant": true }
+        { "name": "Organic Maps", "image": "images/organicmaps.png", "tags": ["cartes", "navigation", "maps"], "platform": "android" }
       ]
     },
     {
