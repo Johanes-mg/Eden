@@ -500,4 +500,84 @@
       font-size: 22px;
     }
   }
+
+}
+[data-theme="dark"] body {
+  background-color: #141416;
+  color: #e8e6e0;
+}
+[data-theme="dark"] .eden-header {
+  background-color: rgba(20, 20, 22, 0.9);
+  border-color: #2c2c30;
+}
+[data-theme="dark"] .eden-footer {
+  background-color: #141416;
+  border-color: #2c2c30;
+}
+[data-theme="dark"] .brand,
+[data-theme="dark"] .brand-name,
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .category-title,
+[data-theme="dark"] .item-title,
+[data-theme="dark"] .about-block-title,
+[data-theme="dark"] .about-intro h2,
+[data-theme="dark"] .about-lead {
+  color: #e8e6e0;
+}
+[data-theme="dark"] .nav a,
+[data-theme="dark"] .lang-trigger,
+[data-theme="dark"] .hero p,
+[data-theme="dark"] .about-block p,
+[data-theme="dark"] .about-stack li,
+[data-theme="dark"] .subgroup-title,
+[data-theme="dark"] .eden-footer,
+[data-theme="dark"] .empty {
+  color: #a8a6a0;
+}
+[data-theme="dark"] .nav a:hover,
+[data-theme="dark"] .nav a.active,
+[data-theme="dark"] .lang-trigger:hover,
+[data-theme="dark"] .lang-list li:hover,
+[data-theme="dark"] .lang-list li.active {
+  background-color: #2a2a2e;
+  color: #e8e6e0;
+}
+[data-theme="dark"] .lang-list {
+  background-color: #1e1e21;
+  border-color: #2c2c30;
+}
+[data-theme="dark"] #searchInput {
+  background-color: #1e1e21;
+  border-color: #2c2c30;
+  color: #e8e6e0;
+}
+[data-theme="dark"] #searchInput::placeholder {
+  color: #7a7872;
+}
+[data-theme="dark"] .platform-tab {
+  background-color: #1e1e21;
+  border-color: #2c2c30;
+  color: #a8a6a0;
+}
+[data-theme="dark"] .platform-tab:hover,
+[data-theme="dark"] .platform-tab.active {
+  background-color: #2a2a2e;
+  color: #e8e6e0;
+}
+[data-theme="dark"] .platform-tab:hover {
+  border-color: #3a3a3f;
+}
+[data-theme="dark"] .item {
+  background-color: #1e1e21;
+  border-color: #2c2c30;
+}
+[data-theme="dark"] .item-logo {
+  background-color: #2a2a2e;
+}
+[data-theme="dark"] .category-header,
+[data-theme="dark"] .about-block {
+  border-color: #2c2c30;
+}
+[data-theme="dark"] .lang-caret {
+  border-top-color: currentColor;
 }

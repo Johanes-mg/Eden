@@ -7,6 +7,9 @@
   const langTrigger = document.getElementById("langTrigger");
   const langList = document.getElementById("langList");
   const langLabel = document.getElementById("langLabel");
+  const themeTrigger = document.getElementById("themeTrigger");
+  const themeList = document.getElementById("themeList");
+  const themeLabel = document.getElementById("themeLabel");
 
   let DB = { categories: [] };
   let query = "";
@@ -27,6 +30,8 @@
       "platform.android": "Android",
       "platform.linux": "Linux",
       "platform.os": "OS",
+      "theme.light": "Light",
+      "theme.dark": "Dark",
       "about.title": "About Eden",
       "about.lead":
         "Eden is not just a directory of software. It is a demanding selection of tools chosen for what they truly bring: freedom, sobriety, quality.",
@@ -59,6 +64,8 @@
       "platform.android": "Android",
       "platform.linux": "Linux",
       "platform.os": "OS",
+      "theme.light": "Clair",
+      "theme.dark": "Sombre",
       "about.title": "À propos d'Eden",
       "about.lead":
         "Eden n'est pas un simple annuaire de logiciels. C'est une sélection exigeante d'outils choisis pour ce qu'ils apportent vraiment : liberté, sobriété, qualité.",
@@ -92,6 +99,53 @@
     return currentLang === "en" && item.groupEn ? item.groupEn : item.group;
   }
 
+  function getTheme() {
+    return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    if (themeLabel) {
+      themeLabel.textContent = theme === "dark" ? t("theme.dark") : t("theme.light");
+    }
+    if (themeList) {
+      themeList.querySelectorAll("li").forEach((li) => {
+        li.classList.toggle("active", li.dataset.theme === theme);
+      });
+    }
+  }
+
+  function setTheme(theme) {
+    localStorage.setItem("eden.theme", theme);
+    applyTheme(theme);
+    closeThemeMenu();
+  }
+
+  function openThemeMenu() {
+    themeList.classList.add("open");
+    themeTrigger.setAttribute("aria-expanded", "true");
+  }
+
+  function closeThemeMenu() {
+    themeList.classList.remove("open");
+    themeTrigger.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleThemeMenu() {
+    if (themeList.classList.contains("open")) closeThemeMenu();
+    else openThemeMenu();
+  }
+
+  if (themeTrigger && themeList) {
+    themeTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleThemeMenu();
+    });
+    themeList.querySelectorAll("li").forEach((li) => {
+      li.addEventListener("click", () => setTheme(li.dataset.theme));
+    });
+  }
+
   function applyLang(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
@@ -107,6 +161,13 @@
     langList.querySelectorAll("li").forEach((li) => {
       li.classList.toggle("active", li.dataset.lang === lang);
     });
+
+    if (themeList) {
+      themeList.querySelectorAll("li").forEach((li) => {
+        li.textContent = li.dataset.theme === "dark" ? t("theme.dark") : t("theme.light");
+      });
+    }
+    applyTheme(getTheme());
 
     navigate();
   }
@@ -142,11 +203,17 @@
   });
 
   document.addEventListener("click", (e) => {
-    if (!e.target.closest(".lang-menu")) closeLangMenu();
+    if (!e.target.closest(".lang-menu")) {
+      closeLangMenu();
+      closeThemeMenu();
+    }
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeLangMenu();
+    if (e.key === "Escape") {
+      closeLangMenu();
+      closeThemeMenu();
+    }
   });
 
   function getRoute() {
@@ -490,6 +557,7 @@
       ? savedPlatform
       : "windows";
 
+  applyTheme(getTheme());
   applyLang(currentLang);
 
   fetch("eden.json")

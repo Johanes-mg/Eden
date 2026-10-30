@@ -158,7 +158,7 @@
       "items": [
         { "name": "KeePassXC", "image": "images/keepassxc.png", "tags": ["sécurité", "mots de passe"], "platform": ["windows"] },
         { "name": "KeePassDX", "image": "images/keepassdx.png", "tags": ["sécurité", "mots de passe"], "platform": ["android"] },
-        { "name": "Prototon Pass", "image": "images/protonpass.png", "tags": ["sécurité", "mots de passe"], "platform": ["windows", "android"] }
+        { "name": "Proton Pass", "image": "images/protonpass.png", "tags": ["sécurité", "mots de passe"], "platform": ["windows", "android"] }
       ]
     },
     {
@@ -176,7 +176,19 @@
       "nameEn": "File transfer",
       "items": [
         { "name": "LocalSend", "image": "images/localsend.png", "tags": ["fichiers", "transfert"], "platform": ["windows", "linux", "android"] },
-        { "name": "Warpinator", "image": "images/warpinator.png", "tags": ["fichiers", "transfert"], "platform": ["windows", "linux"] }
+        { "name": "Xender", "image": "images/xender.png", "tags": ["fichiers", "transfert"], "platform": "android", "payant": true },
+        { "name": "Warpinator", "image": "images/warpinator.png", "tags": ["fichiers", "transfert"], "platform": ["windows", "android", "linux"] }
+      ]
+    },
+    {
+      "id": "gestionnairepaquets",
+      "name": "Gestionnaire de paquets",
+      "nameEn": "Package manager",
+      "items": [
+        { "name": "UniGetUI", "image": "images/unigetui.png", "tags": ["paquets", "gestionnaire"], "platform": ["windows", "linux"] },
+        { "name": "F-Droid", "image": "images/fdroid.png", "tags": ["paquets", "gestionnaire"], "platform": "android" },
+        { "name": "Droidify", "image": "images/droidify.png", "tags": ["paquets", "gestionnaire"], "platform": "android" },
+        { "name": "Play Store", "image": "images/playstore.png", "tags": ["paquets", "gestionnaire"], "platform": "android", "payant": true }
       ]
     },
     {
@@ -230,7 +242,7 @@
       "nameEn": "Antivirus",
       "items": [
         { "name": "Windows Defender", "image": "images/windowsdefender.png", "tags": ["antivirus"], "platform": "windows" },
-        { "name": "Bit Defender", "image": "images/bitdefender.png", "tags": ["antivirus"], "platform": "windows", "payant":true }
+        { "name": "Bit Defender", "image": "images/bitdefender.png", "tags": ["antivirus"], "platform": "windows", "payant": true }
       ]
     },
     {
@@ -239,7 +251,7 @@
       "nameEn": "Malware analysis",
       "items": [
         { "name": "Emsisoft Emergency Kit", "image": "images/emsisoft.png", "tags": ["analyse", "trojan", "urgence"], "platform": "windows" },
-        { "name": "Malwarebtyes", "image": "images/malwarebytes.png", "tags": ["analyse", "trojan", "urgence"], "platform": "windows" }
+        { "name": "Malwarebytes", "image": "images/malwarebytes.png", "tags": ["analyse", "trojan", "urgence"], "platform": "windows" }
       ]
     },
     {
@@ -324,7 +336,7 @@
         { "name": "LibreWolf", "image": "images/librewolf.png", "tags": ["navigateur"], "platform": ["windows", "linux"] },
         { "name": "Vivaldi", "image": "images/vivaldi.png", "tags": ["navigateur"], "platform": ["windows", "linux", "android"] },
         { "name": "DuckDuckGo", "image": "images/duckduckgo.png", "tags": ["navigateur"], "platform": ["windows", "android"] },
-        { "name": "Mullvad Browser", "image": "images/duckduckgo.png", "tags": ["navigateur"], "platform": ["windows", "android"] }
+        { "name": "Mullvad Browser", "image": "images/mullvad.png", "tags": ["navigateur"], "platform": ["windows", "linux"] }
       ]
     },
     {
@@ -334,8 +346,8 @@
       "items": [
         { "name": "Mastodon", "image": "images/mastodon.png", "tags": ["social", "fédéré"], "platform": ["windows", "linux", "android"] },
         { "name": "Bluesky", "image": "images/bluesky.png", "tags": ["social", "fédéré"], "platform": ["windows", "linux", "android"] },
-        { "name": "Signal", "image": "images/signal.png", "tags": ["social", "fédéré"], "platform": ["windows", "linux", "android"] },
-        { "name": "Discord", "image": "images/discord.png", "tags": ["social", "fédéré"], "platform": ["windows", "linux", "android"], "payant": true }
+        { "name": "Signal", "image": "images/signal.png", "tags": ["social", "messagerie"], "platform": ["windows", "linux", "android"] },
+        { "name": "Discord", "image": "images/discord.png", "tags": ["social", "messagerie"], "platform": ["windows", "linux", "android"], "payant": true }
       ]
     },
     {

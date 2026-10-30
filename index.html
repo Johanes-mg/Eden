@@ -6,6 +6,15 @@
     <title>Eden</title>
     <link rel="icon" type="image/webp" href="icon.webp" />
     <link rel="stylesheet" href="eden.css" />
+    <script>
+      (function () {
+        var saved = localStorage.getItem("eden.theme");
+        var theme = saved === "dark" || saved === "light"
+          ? saved
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
     <header class="eden-header">
@@ -19,6 +28,7 @@
           <a href="#/" data-nav="home" data-i18n="nav.home">Accueil</a>
           <a href="#/alternatives" data-nav="alternatives" data-i18n="nav.alternatives">Alternatives</a>
           <a href="#/about" data-nav="about" data-i18n="nav.about">À propos</a>
+
           <div class="lang-menu">
             <button class="lang-trigger" id="langTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
               <span id="langLabel">English</span>
@@ -27,6 +37,17 @@
             <ul class="lang-list" id="langList" role="listbox" aria-label="Language">
               <li role="option" data-lang="en">English</li>
               <li role="option" data-lang="fr">Français</li>
+            </ul>
+          </div>
+
+          <div class="lang-menu">
+            <button class="lang-trigger" id="themeTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span id="themeLabel">Light</span>
+              <span class="lang-caret"></span>
+            </button>
+            <ul class="lang-list" id="themeList" role="listbox" aria-label="Theme">
+              <li role="option" data-theme="light">Light</li>
+              <li role="option" data-theme="dark">Dark</li>
             </ul>
           </div>
         </nav>
