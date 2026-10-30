@@ -60,7 +60,6 @@
     @apply text-text bg-surface-alt;
   }
 
-  /* -------- Menu langue -------- */
   .lang-menu {
     @apply relative;
   }
@@ -98,7 +97,6 @@
     @apply text-text bg-surface-alt font-medium;
   }
 
-  /* -------- Recherche -------- */
   .search-wrap {
     @apply ml-auto relative w-60 shrink-0 z-[1];
   }
@@ -111,7 +109,7 @@
     @apply w-full py-2.5 pl-9 pr-3.5 border border-border rounded-sm bg-surface font-sans text-sm text-text outline-none focus:border-accent placeholder:text-text-muted;
   }
 
-  /* -------- Application -------- */
+  /* ---------- App ---------- */
   #app {
     min-height: calc(100vh - 68px - 56px);
     @apply flex flex-col justify-center pt-8 pb-20;
@@ -125,7 +123,38 @@
     @apply justify-start;
   }
 
-  /* -------- Hero -------- */
+  /* ---------- Platform tabs (horizontal) ---------- */
+  .platform-tabs {
+    @apply flex flex-wrap items-center justify-center gap-2 mb-12;
+    width: 100%;
+  }
+
+  .platform-tab {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-sm border border-border bg-surface text-text-muted text-sm font-medium cursor-pointer select-none whitespace-nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .platform-tab:hover {
+    @apply text-text bg-surface-alt;
+    border-color: #d0ccbf;
+  }
+
+  .platform-tab.active {
+    @apply text-text bg-surface-alt border-accent;
+  }
+
+  .platform-logo {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .platform-label {
+    @apply leading-none;
+  }
+
+  /* ---------- Hero ---------- */
   .hero {
     @apply text-center p-0;
   }
@@ -144,7 +173,7 @@
     font-size: clamp(15px, 2vw, 17px);
   }
 
-  /* -------- Catégories -------- */
+  /* ---------- Categories ---------- */
   .category-section {
     @apply mb-14;
   }
@@ -192,7 +221,7 @@
     @apply text-[17px] font-semibold tracking-tight text-text break-words;
   }
 
-  /* -------- About -------- */
+  /* ---------- About ---------- */
   .about-content {
     @apply mx-auto pt-4;
   }
@@ -253,7 +282,6 @@
     filter: brightness(0) invert(1);
   }
 
-  /* -------- Empty -------- */
   .empty {
     @apply text-center py-20 px-5 text-text-muted;
   }
@@ -262,7 +290,6 @@
     @apply w-12 h-12 opacity-30 mb-4;
   }
 
-  /* -------- Footer -------- */
   .eden-footer {
     @apply fixed bottom-0 left-0 right-0 h-footer bg-bg border-t border-border flex items-center text-[13px] text-text-muted text-center z-[100];
   }
@@ -330,6 +357,7 @@
       padding-top: 160px;
     }
     #app {
+      min-height: calc(100dvh - 160px - 52px);
       padding-top: 24px;
       padding-bottom: 60px;
     }
@@ -371,6 +399,7 @@
       padding-bottom: 52px;
     }
     #app {
+      min-height: calc(100dvh - 156px - 52px);
       padding-top: 20px;
       padding-bottom: 52px;
     }
@@ -404,6 +433,16 @@
     }
     .hero p {
       @apply text-sm;
+    }
+    .platform-tabs {
+      @apply gap-1.5 mb-8;
+    }
+    .platform-tab {
+      @apply px-2.5 py-2 text-xs gap-1.5;
+    }
+    .platform-logo {
+      width: 12px;
+      height: 12px;
     }
     .category-section {
       @apply mb-10;
@@ -446,6 +485,9 @@
   @media (max-width: 360px) {
     body {
       padding-top: 152px;
+    }
+    #app {
+      min-height: calc(100dvh - 152px - 52px);
     }
     .nav a,
     .lang-trigger {

@@ -11,6 +11,7 @@
   let DB = { categories: [] };
   let query = "";
   let currentLang = "en";
+  let currentPlatform = "windows";
 
   const I18N = {
     en: {
@@ -22,18 +23,22 @@
       "hero.title.pre": "Cultivate your",
       "hero.title.em": "digital freedom.",
       "hero.subtitle": "The garden where tools grow freely.",
+      "platform.windows": "Windows",
+      "platform.android": "Android",
+      "platform.linux": "Linux",
+      "platform.os": "OS",
       "about.title": "About Eden",
       "about.lead":
         "Eden is not just a directory of software. It is a demanding selection of tools chosen for what they truly bring: freedom, sobriety, quality.",
       "about.block1.title": "Our mission",
       "about.block1.text":
-        "Gather the best digital tools, whether free, open source or paid. Price is not the criterion — the quality of the experience is.",
+        "Gather the best digital tools, whether free, open source or paid. Price is not the criterion, the quality of the experience is.",
       "about.block2.title": "Our method",
       "about.block2.text":
         "Every entry is tested, documented, maintained. We clearly distinguish what is free, what is open source, and what is paid. A red dot marks the commercial software we kept anyway, because it is worth it.",
       "about.block3.title": "Tagline",
       "about.block3.text":
-        "Productivity is our ultimate driver. We list the tools you actually need — not just famous commercial software, but true quality.",
+        "Productivity is our ultimate driver. We list the tools you actually need, not just famous commercial software, but true quality.",
       "about.stack.title": "Under the hood",
       "about.stack.l1": "Minimalist interface",
       "about.stack.l2": "Data loaded from a single source",
@@ -50,6 +55,10 @@
       "hero.title.pre": "Cultivez votre",
       "hero.title.em": "liberté numérique.",
       "hero.subtitle": "Le jardin où les outils poussent librement.",
+      "platform.windows": "Windows",
+      "platform.android": "Android",
+      "platform.linux": "Linux",
+      "platform.os": "OS",
       "about.title": "À propos d'Eden",
       "about.lead":
         "Eden n'est pas un simple annuaire de logiciels. C'est une sélection exigeante d'outils choisis pour ce qu'ils apportent vraiment : liberté, sobriété, qualité.",
@@ -75,6 +84,14 @@
     return (I18N[currentLang] && I18N[currentLang][key]) || key;
   }
 
+  function categoryName(cat) {
+    return currentLang === "en" && cat.nameEn ? cat.nameEn : cat.name;
+  }
+
+  function groupName(item) {
+    return currentLang === "en" && item.groupEn ? item.groupEn : item.group;
+  }
+
   /* ---------- LANGUE ---------- */
   function applyLang(lang) {
     currentLang = lang;
@@ -92,7 +109,6 @@
       li.classList.toggle("active", li.dataset.lang === lang);
     });
 
-    // Re-render la page courante pour appliquer la langue au contenu dynamique
     navigate();
   }
 
@@ -113,11 +129,8 @@
   }
 
   function toggleLangMenu() {
-    if (langList.classList.contains("open")) {
-      closeLangMenu();
-    } else {
-      openLangMenu();
-    }
+    if (langList.classList.contains("open")) closeLangMenu();
+    else openLangMenu();
   }
 
   langTrigger.addEventListener("click", (e) => {
@@ -157,13 +170,10 @@
     const route = getRoute();
     setActiveNav(route);
 
-    if (route === "alternatives") {
-      renderAll();
-    } else if (route === "about") {
-      renderAbout();
-    } else {
-      renderHome();
-    }
+    if (route === "alternatives") renderAll();
+    else if (route === "about") renderAbout();
+    else renderHome();
+
     window.scrollTo({ top: 0, behavior: "instant" });
   }
 
@@ -172,6 +182,13 @@
     if (className) node.className = className;
     if (text != null) node.textContent = text;
     return node;
+  }
+
+  function itemMatchesPlatform(item, platform) {
+    if (platform === "os") return true;
+    if (!item.platform) return false;
+    if (Array.isArray(item.platform)) return item.platform.includes(platform);
+    return item.platform === platform;
   }
 
   function buildItem(item) {
@@ -199,9 +216,9 @@
     return box;
   }
 
-  function buildGroupBlock(groupName, items) {
+  function buildGroupBlock(groupLabel, items) {
     const wrap = el("div", "subgroup");
-    wrap.appendChild(el("h3", "subgroup-title", groupName));
+    wrap.appendChild(el("h3", "subgroup-title", groupLabel));
     const grid = el("div", "items-grid");
     items.forEach((it) => grid.appendChild(buildItem(it)));
     wrap.appendChild(grid);
@@ -209,32 +226,43 @@
   }
 
   function buildCategorySection(category) {
-    const section = el("section", "category-section");
+    let filtered;
 
+    if (currentPlatform === "os") {
+      if (category.id !== "os") return null;
+      filtered = category.items;
+    } else {
+      filtered = category.items.filter((it) =>
+        itemMatchesPlatform(it, currentPlatform),
+      );
+    }
+
+    if (filtered.length === 0) return null;
+
+    const section = el("section", "category-section");
     const header = el("div", "category-header");
-    header.appendChild(el("h2", "category-title", category.name));
+    header.appendChild(el("h2", "category-title", categoryName(category)));
     section.appendChild(header);
 
-    const hasGroups = category.items.some((it) => it.group);
+    const hasGroups = filtered.some((it) => it.group);
 
     if (!hasGroups) {
       const grid = el("div", "items-grid");
-      category.items.forEach((it) => grid.appendChild(buildItem(it)));
+      filtered.forEach((it) => grid.appendChild(buildItem(it)));
       section.appendChild(grid);
       return section;
     }
 
     const buckets = new Map();
-    category.items.forEach((it) => {
-      const key = it.group || "";
+    filtered.forEach((it) => {
+      const key = groupName(it) || "";
       if (!buckets.has(key)) buckets.set(key, []);
       buckets.get(key).push(it);
     });
 
-    buckets.forEach((items, groupName) => {
-      if (groupName) {
-        section.appendChild(buildGroupBlock(groupName, items));
-      } else {
+    buckets.forEach((items, label) => {
+      if (label) section.appendChild(buildGroupBlock(label, items));
+      else {
         const grid = el("div", "items-grid");
         items.forEach((it) => grid.appendChild(buildItem(it)));
         section.appendChild(grid);
@@ -254,7 +282,8 @@
           (it) =>
             it.name.toLowerCase().includes(q) ||
             (it.tags || []).some((t) => t.toLowerCase().includes(q)) ||
-            (it.group || "").toLowerCase().includes(q),
+            (it.group || "").toLowerCase().includes(q) ||
+            (it.groupEn || "").toLowerCase().includes(q),
         ),
       }))
       .filter((cat) => cat.items.length > 0);
@@ -271,6 +300,45 @@
     return wrap;
   }
 
+  /* ---------- PLATFORM TABS ---------- */
+  function buildPlatformTabs() {
+    const wrap = el("div", "platform-tabs");
+    const platforms = [
+      { id: "os", logo: "images/os.png" },
+      { id: "windows", logo: "images/windows.png" },
+      { id: "android", logo: "images/android.png" },
+      { id: "linux", logo: "images/linux.png" },
+    ];
+
+    platforms.forEach((p) => {
+      const btn = el("button", "platform-tab");
+      btn.type = "button";
+      btn.dataset.platform = p.id;
+      btn.classList.toggle("active", p.id === currentPlatform);
+
+      const img = document.createElement("img");
+      img.src = p.logo;
+      img.alt = "";
+      img.className = "platform-logo";
+      img.width = 16;
+      img.height = 16;
+      btn.appendChild(img);
+
+      btn.appendChild(el("span", "platform-label", t("platform." + p.id)));
+
+      btn.addEventListener("click", () => {
+        currentPlatform = p.id;
+        localStorage.setItem("eden.platform", currentPlatform);
+        renderAll();
+      });
+
+      wrap.appendChild(btn);
+    });
+
+    return wrap;
+  }
+
+  /* ---------- PAGES ---------- */
   function renderHome() {
     app.innerHTML = "";
     app.classList.remove("app-top");
@@ -290,14 +358,22 @@
     app.classList.remove("app-centered");
     app.classList.add("app-top");
 
+    app.appendChild(buildPlatformTabs());
+
     const cats = filteredCategories();
+    let rendered = 0;
 
-    if (cats.length === 0) {
+    cats.forEach((cat) => {
+      const section = buildCategorySection(cat);
+      if (section) {
+        app.appendChild(section);
+        rendered++;
+      }
+    });
+
+    if (rendered === 0) {
       app.appendChild(renderEmpty());
-      return;
     }
-
-    cats.forEach((cat) => app.appendChild(buildCategorySection(cat)));
   }
 
   function renderAbout() {
@@ -369,6 +445,7 @@
     app.appendChild(wrap);
   }
 
+  /* ---------- SEARCH ---------- */
   let searchTimer;
   searchInput.addEventListener("input", (e) => {
     clearTimeout(searchTimer);
@@ -387,6 +464,16 @@
   /* ---------- BOOT ---------- */
   const savedLang = localStorage.getItem("eden.lang");
   currentLang = savedLang === "fr" || savedLang === "en" ? savedLang : "en";
+
+  const savedPlatform = localStorage.getItem("eden.platform");
+  currentPlatform =
+    savedPlatform === "windows" ||
+    savedPlatform === "android" ||
+    savedPlatform === "linux" ||
+    savedPlatform === "os"
+      ? savedPlatform
+      : "windows";
+
   applyLang(currentLang);
 
   fetch("eden.json")
